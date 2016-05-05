@@ -1,8 +1,14 @@
 package es.uvigo.esei.dojojava;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,7 +57,7 @@ public class ExerciseTestCase {
 		   No importa el orden.
 		*/
 		
-		System.out.println("Distinct unsorted: ");
+		System.out.println("Distinct unsorted: " + new HashSet<>(CARS));
 	}
 	
 	@Test
@@ -62,7 +68,7 @@ public class ExerciseTestCase {
 		   Ordenados por orden alfabético.
 		*/
 		
-		System.out.println("Distinct sorted: ");
+		System.out.println("Distinct sorted: " + new TreeSet<>(CARS));
 	}
 	
 	@Test
@@ -74,7 +80,18 @@ public class ExerciseTestCase {
 		   No importa el orden.
 		*/
 		
-		System.out.println("Count unsorted: ");
+		Map<String, Integer> count = new HashMap<>();
+		
+		for (String car : CARS) {
+			if (count.containsKey(car)) {
+				count.put(car, count.get(car) + 1);
+			} else {
+				count.put(car, 1);
+			}
+		}
+		
+		
+		System.out.println("Count unsorted: " + count);
 	}
 	
 	@Test
@@ -86,7 +103,17 @@ public class ExerciseTestCase {
 		   Ordenados por orden alfabético.
 		*/
 		
-		System.out.println("Count sorted: ");
+		Map<String, Integer> count = new TreeMap<>();
+		
+		for (String car : CARS) {
+			if (count.containsKey(car)) {
+				count.put(car, count.get(car) + 1);
+			} else {
+				count.put(car, 1);
+			}
+		}
+		
+		System.out.println("Count sorted: " + count);
 	}
 	
 	@Test
@@ -98,7 +125,17 @@ public class ExerciseTestCase {
 		   El el mismo orden en el que aparecen en la lista CARS.
 		*/
 		
-		System.out.println("Count original order: ");
+		Map<String, Integer> count = new LinkedHashMap<>();
+		
+		for (String car : CARS) {
+			if (count.containsKey(car)) {
+				count.put(car, count.get(car) + 1);
+			} else {
+				count.put(car, 1);
+			}
+		}
+		
+		System.out.println("Count original order: " + count);
 	}
 	
 	@Test
